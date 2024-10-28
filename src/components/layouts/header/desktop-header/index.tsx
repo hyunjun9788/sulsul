@@ -139,32 +139,37 @@ export const DesktopHeader = ({ className, ...props }: DesktopHeaderProps) => {
     }
     if (status === 'unauthenticated')
       return (
-        <AlertDialog>
-          <AlertDialogTrigger asChild>
-            <Button
-              size={'sm'}
-              variant={'default'}
-              aria-label="google login button"
-              onClick={() => {
-                pause();
-              }}
-            >
-              지금 시작하기
-            </Button>
-          </AlertDialogTrigger>
-          <AlertDialogContent className={cn('absolute left-0 top-0')}>
-            <AlertDialogTitle />
-            <AlertDialogDescription />
-            <SignInView callbackUrl="/" onSignIn={() => setIsLoggingIn(true)} />
-          </AlertDialogContent>
-        </AlertDialog>
+        <div className="relative">
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button
+                size={'sm'}
+                variant={'default'}
+                aria-label="google login button"
+                onClick={() => {
+                  pause();
+                }}
+              >
+                지금 시작하기
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent className={cn('absolute left-0 top-0')}>
+              <AlertDialogTitle />
+              <AlertDialogDescription />
+              <SignInView
+                callbackUrl="/"
+                onSignIn={() => setIsLoggingIn(true)}
+              />
+            </AlertDialogContent>
+          </AlertDialog>
+        </div>
       );
   };
 
   return (
     <header
       className={cn(
-        'flex h-full items-center justify-between gap-[46px] tablet:gap-6',
+        'relative flex h-full items-center justify-between gap-[46px] tablet:gap-6',
         className,
       )}
       {...props}
@@ -176,6 +181,13 @@ export const DesktopHeader = ({ className, ...props }: DesktopHeaderProps) => {
         <HeaderNavigation className="gap-[46px] tablet:gap-6" />
       </div>
       {renderLoginState()}
+      <Image
+        className="absolute -right-4 top-14 h-11 w-[143px] animate-custom-bounce"
+        src="/images/header-login-dialog.svg"
+        width={143}
+        height={44}
+        alt="header-login-dialog"
+      />
     </header>
   );
 };
