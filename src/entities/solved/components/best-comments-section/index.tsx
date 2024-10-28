@@ -30,11 +30,8 @@ export const BestCommentsSection = ({
     date: dayjs().subtract(7, 'day'),
     formatCase: 'YYYY-MM-DD',
   });
-  const {
-    data: previousInterviewData,
-    isSuccess: isSuccessPreviousInterviewData,
-    isLoading: isLoadingInterview,
-  } = useInterview(previousWeekDate);
+  const { data: previousInterviewData, isLoading: isLoadingInterview } =
+    useInterview(previousWeekDate);
 
   const { data: answerListData, isLoading: isLoadingAnswerList } =
     useAnswerList({
@@ -70,7 +67,7 @@ export const BestCommentsSection = ({
       {isLoadingState ? (
         <BestAnswerListSectionSkeleton />
       ) : hasNoData ? (
-        <NoDataCard className="border-none text-base font-medium text-gray-400 shadow-none" />
+        <NoDataCard className="my-[173px] border-none text-base font-medium text-gray-400 shadow-none" />
       ) : (
         <>
           <div className="flex flex-col gap-4 pl-4">
@@ -116,7 +113,7 @@ export const BestCommentsSection = ({
             </ul>
           </div>
           <button
-            className="absolute bottom-[27px] w-[242px] border-t border-gray-200 pt-3 text-center text-base text-gray-500"
+            className="bottom-[27px] mt-6 w-[242px] border-t border-gray-200 pt-3 text-center text-base text-gray-500"
             onClick={handleClickAnswerViewBtn}
           >
             Best 답변 모두 보기

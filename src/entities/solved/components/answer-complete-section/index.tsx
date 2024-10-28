@@ -34,7 +34,7 @@ export const AnswerCompleteSection = ({
   const [isOpenMoreMenu, setOpenMoreMenu] = useState(false);
   const { isRecommended, weeklyInterviewAnswerId, recommendCount } =
     myWriteAnswerData;
-  const { data: currentInterviewData } = useInterview(pivotDate);
+  const { data: currentInterviewData, refetch } = useInterview(pivotDate);
   const { auth, data } = useUserStore();
   const { userId, accessToken } = auth;
 
@@ -52,9 +52,8 @@ export const AnswerCompleteSection = ({
   const { setMyAnswerData } = useMyAnswerStore();
   const { answerListData } = useAnswerListStore();
 
-  const { currentData, refetch } = useInterviewStore();
   const { mutate: recommendMutation, error } = useAnswerRecommend({
-    currentInterviewId: currentData?.weeklyInterviewId || 0,
+    currentInterviewId: currentInterviewData?.weeklyInterviewId || 0,
     accessToken,
     userId,
     pivotDate,
@@ -118,7 +117,7 @@ export const AnswerCompleteSection = ({
     }
   }, [error]);
 
-  if (!currentData?.endTime) return;
+  if (!currentInterviewData?.endTime) return;
 
   return (
     <>
@@ -134,11 +133,14 @@ export const AnswerCompleteSection = ({
               />
               <p>참여완료</p>
             </div>
-            <CountDownView endTime={currentData?.endTime} refetch={refetch} />
+            <CountDownView
+              endTime={currentInterviewData?.endTime}
+              refetch={refetch}
+            />
           </div>
 
           <h1 className="text-4xl font-bold">
-            {removeNewlines(currentData?.content)}
+            {removeNewlines(currentInterviewData?.content)}
           </h1>
         </div>
         <div className="flex flex-col gap-2">
@@ -209,11 +211,13 @@ export const AnswerCompleteSection = ({
           </span>
         </h4>
 
-        {currentInterviewData && currentInterviewData.answerCount === 1 ? (
+        {currentInterviewData && currentInterviewData.answerCount === 1 && (
           <p className="font-medium text-gray-500">
             {data.nickname}님이 첫 답변을 남기셨군요!
           </p>
-        ) : (
+        )}
+
+        {currentInterviewData && currentInterviewData.answerCount > 1 && (
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-1">

@@ -15,7 +15,6 @@ import { formatDate } from '@/shared/helpers/date-helpers';
 import { useAnswerModalStore } from '@/store/answerModalStore';
 import { useUserStore } from '@/store/client';
 import { useInterviewStore } from '@/store/interviewStore';
-import { useVideoStateStore } from '@/store/modal';
 
 import { useInterview } from '../../hooks/use-get-interview';
 import { CountDownView } from '../count-down-view';
@@ -26,14 +25,12 @@ export const TogetherSolvedContent = () => {
   const { auth } = useUserStore();
   const { accessToken } = auth;
 
-  const pivotDate = formatDate({ formatCase: 'YYYY-MM-DD' });
   const previousWeekDate = formatDate({
     date: dayjs().subtract(7, 'day'),
     formatCase: 'YYYY-MM-DD',
   });
-  const { data: previousData } = useInterview(previousWeekDate);
-  const { currentData, setInterviewData, setPreviousInterviewData, refetch } =
-    useInterviewStore();
+  const { data: currentData, refetch } = useInterview(previousWeekDate);
+  const { setInterviewData } = useInterviewStore();
   const currentTitle = currentData?.content.split('\\n');
 
   const handleClickCreateAnswerBtn = () => {
@@ -45,10 +42,7 @@ export const TogetherSolvedContent = () => {
     if (currentData) {
       setInterviewData(currentData);
     }
-    if (previousData) {
-      setPreviousInterviewData(previousData);
-    }
-  }, [currentData, previousData]);
+  }, [currentData]);
 
   if (!currentData?.endTime) return;
 
