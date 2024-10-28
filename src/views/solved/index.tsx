@@ -7,19 +7,26 @@ import { BestCommentsSection } from '@/entities/solved/components/best-comments-
 import { MyActivitySection } from '@/entities/solved/components/my-activity-section';
 import { TogetherSolvedSection } from '@/entities/solved/components/together-solved-section';
 import { WeekRankingSection } from '@/entities/solved/components/week-ranking-section';
+import { cn } from '@/lib/utils';
 import { formatDate } from '@/shared/helpers/date-helpers';
 
 export const Solved = async () => {
   const pivotDate = formatDate({ formatCase: 'YYYY-MM-DD' });
   const authInfo = await auth();
-  const userId = authInfo?.user.auth.userId || 0;
-  const accessToken = authInfo?.user.auth.accessToken || '';
+
+  const { userId = 0, accessToken = '' } = authInfo?.user.auth || {};
 
   return (
     <main className="flex w-full gap-6">
       <div className="hidden lg:flex lg:w-[282px] lg:flex-col lg:gap-[30px] ">
-        <MyActivitySection userId={userId} accessToken={accessToken} />
-        <WeekRankingSection accessToken={accessToken} pivotDate={pivotDate} />
+        <MyActivitySection
+          userId={userId || 0}
+          accessToken={accessToken || ''}
+        />
+        <WeekRankingSection
+          accessToken={accessToken || ''}
+          pivotDate={pivotDate}
+        />
 
         <Image
           src="/images/gift-banner.svg"
@@ -42,11 +49,18 @@ export const Solved = async () => {
           />
           <h3 className="text-lg font-bold">지난주 BEST 답변</h3>
         </div>
-        <div className="relative flex h-[478px] w-full flex-col items-center rounded-md border border-gray-200 bg-white pb-[27px] pt-[30px] shadow-base">
-          {accessToken ? (
-            <BestCommentsSection accessToken={accessToken} />
-          ) : (
-            <NoDataCard className="border-none text-base font-medium text-gray-400 shadow-none" />
+        <div
+          className={cn(
+            'relative flex w-full flex-col items-center rounded-md border border-gray-200 bg-white pb-[27px] pt-[30px] shadow-base',
+            !accessToken && 'min-h-[478px]',
+          )}
+        >
+          {accessToken && <BestCommentsSection accessToken={accessToken} />}
+          {!accessToken && (
+            <NoDataCard
+              content="로그인 후 볼 수 있어요"
+              className="border-none text-base font-medium text-gray-400 shadow-none"
+            />
           )}
         </div>
       </div>

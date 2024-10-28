@@ -11,7 +11,6 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import NoDataCard from '@/entities/practice/components/no-data-card';
-import { formatDate } from '@/shared/helpers/date-helpers';
 import { useAnswerListStore } from '@/store/answerListStore';
 import { useInterviewStore } from '@/store/interviewStore';
 
@@ -40,11 +39,12 @@ export const WeekRankingSection = ({
     accessToken,
     interviewData: currentInterviewData,
   });
-
   const hasNoData =
-    !accessToken ||
+    !answerListData ||
     answerListData?.pages[0].answers.length === 0 ||
     answerListData?.pages[0].answers[0].recommendCount === 0;
+
+  const isLoading = interviewLoading || answerListLoading;
 
   useEffect(() => {
     if (currentInterviewData) {
@@ -112,9 +112,22 @@ export const WeekRankingSection = ({
       </div>
 
       <ul className="flex min-h-[218px] w-full flex-1 flex-col items-center justify-start gap-5 rounded-md border border-gray-200 bg-white p-5 shadow-base">
-        {interviewLoading || answerListLoading ? (
-          <WeekRankingSectionSkeleton />
-        ) : !hasNoData ? (
+        {!accessToken && (
+          <NoDataCard
+            content="로그인 후 볼 수 있어요"
+            className="border-none text-base font-medium text-gray-400 shadow-none"
+          />
+        )}
+        {!!accessToken && hasNoData && !isLoading && (
+          <NoDataCard
+            content="아직 데이터가 없어요"
+            className="border-none text-base font-medium text-gray-400 shadow-none"
+          />
+        )}
+        {accessToken && isLoading && <WeekRankingSectionSkeleton />}
+
+        {!isLoading &&
+          !hasNoData &&
           answerListData?.pages[0].answers.slice(0, 3).map(
             (userInfo, index) =>
               userInfo.recommendCount >= 1 && (
@@ -152,10 +165,25 @@ export const WeekRankingSection = ({
                   </div>
                 </li>
               ),
-          )
-        ) : (
-          <NoDataCard className="border-none text-base font-medium text-gray-400 shadow-none" />
-        )}
+          )}
+        {/* {!isLoading && !accessToken && (
+          <NoDataCard
+            content="로그인 후 볼 수 있어요"
+            className="border-none text-base font-medium text-gray-400 shadow-none"
+          />
+        )} */}
+        {/* {!isLoading && (hasNoData || !isLogin) && (
+          <NoDataCard
+            content={
+              !isLogin
+                ? '로그인 후 볼 수 있어요'
+                : hasNoData
+                  ? '아직 데이터가 없어요'
+                  : ''
+            }
+            className="border-none text-base font-medium text-gray-400 shadow-none"
+          />
+        )} */}
       </ul>
     </div>
   );
