@@ -181,13 +181,15 @@ export const DesktopHeader = ({ className, ...props }: DesktopHeaderProps) => {
         <HeaderNavigation className="gap-[46px] tablet:gap-6" />
       </div>
       {renderLoginState()}
-      <Image
-        className="absolute -right-4 top-14 h-11 w-[143px] animate-custom-bounce"
-        src="/images/header-login-dialog.svg"
-        width={143}
-        height={44}
-        alt="header-login-dialog"
-      />
+      {status === 'unauthenticated' && (
+        <Image
+          className="absolute -right-4 top-14 h-11 w-[143px] animate-custom-bounce"
+          src="/images/header-login-dialog.svg"
+          width={143}
+          height={44}
+          alt="header-login-dialog"
+        />
+      )}
     </header>
   );
 };
