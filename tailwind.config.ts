@@ -200,6 +200,10 @@ const config = {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-6px)' },
         },
+        customBounce: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(2px)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -207,6 +211,7 @@ const config = {
         shimmer: 'shimmer 1.5s infinite linear',
         'cheering-animation':
           'cheering-animation 1.5s linear ease-out infinite',
+        'custom-bounce': 'customBounce 1s infinite',
       },
     },
   },
