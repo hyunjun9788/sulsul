@@ -70,11 +70,12 @@ export const ReConfirmModal = ({
     setOpenReportModal,
   } = useAnswerModalStore();
 
-  const { mutate: deleteAnswerMutation, isSuccess } = useDeleteAnswer({
+  const { mutate: deleteAnswerMutation } = useDeleteAnswer({
     interviewId: currentData?.weeklyInterviewId || 0,
     answerId: myWriteAnswerData?.weeklyInterviewAnswerId || 0,
     accessToken,
     userId,
+    pivotDate,
     setOpenDeleteModal,
   });
 
