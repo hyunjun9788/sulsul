@@ -19,7 +19,6 @@ import { useInterviewStore } from '@/store/interviewStore';
 
 import { useInterview } from '../../hooks/use-get-interview';
 import { CountDownView } from '../count-down-view';
-import { TogetherSolvedHeader } from '../together-solved-header';
 import { WriteAnswerModal } from '../write-answer-modal';
 
 export const NoAnswerCompleteSection = () => {
@@ -28,13 +27,10 @@ export const NoAnswerCompleteSection = () => {
   const { accessToken } = auth;
 
   const pivotDate = formatDate({ formatCase: 'YYYY-MM-DD' });
-  const previousWeekDate = formatDate({
-    date: dayjs().subtract(7, 'day'),
-    formatCase: 'YYYY-MM-DD',
-  });
+
   const { data: currentData, refetch } = useInterview(pivotDate);
 
-  const { setInterviewData, setPreviousInterviewData } = useInterviewStore();
+  const { setInterviewData } = useInterviewStore();
   const currentTitle = currentData?.content.split('\\n');
 
   const handleClickCreateAnswerBtn = () => {
@@ -46,10 +42,9 @@ export const NoAnswerCompleteSection = () => {
     if (currentData) {
       setInterviewData(currentData);
     }
-  }, [currentData]);
+  }, [currentData, setInterviewData]);
 
   const profileImgs = currentData?.profileImgs || [];
-  const answerCount = currentData?.answerCount || 0;
 
   if (!currentData?.endTime) return;
 
@@ -103,8 +98,9 @@ export const NoAnswerCompleteSection = () => {
                 <AvatarImage src={v} alt="프로필 이미지" />
               </Avatar>
             ))}
+
             <div className="text-xs text-gray-600">
-              {answerCount}명이 답변을 남기고 갔어요!
+              다른 지원자들과 의견을 나눠보세요.
             </div>
           </>
         ) : (

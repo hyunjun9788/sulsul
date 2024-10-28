@@ -10,6 +10,7 @@ interface DeleteAnswerProp {
   answerId: number;
   accessToken: string;
   userId: number;
+  pivotDate: string;
   setOpenDeleteModal: (isOpen: boolean) => void;
 }
 export const useDeleteAnswer = ({
@@ -17,6 +18,7 @@ export const useDeleteAnswer = ({
   answerId,
   accessToken,
   userId,
+  pivotDate,
   setOpenDeleteModal,
 }: DeleteAnswerProp) => {
   const queryClient = useQueryClient();
@@ -30,6 +32,9 @@ export const useDeleteAnswer = ({
     },
     onSuccess: () => {
       toast.success('답변을 삭제했어요.');
+      queryClient.invalidateQueries({
+        queryKey: ['interview', pivotDate],
+      });
       queryClient.invalidateQueries({
         queryKey: ['interview', interviewId, userId, accessToken],
       });
