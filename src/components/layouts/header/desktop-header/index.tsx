@@ -139,30 +139,25 @@ export const DesktopHeader = ({ className, ...props }: DesktopHeaderProps) => {
     }
     if (status === 'unauthenticated')
       return (
-        <div className="relative">
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <Button
-                size={'sm'}
-                variant={'default'}
-                aria-label="google login button"
-                onClick={() => {
-                  pause();
-                }}
-              >
-                지금 시작하기
-              </Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent className={cn('absolute left-0 top-0')}>
-              <AlertDialogTitle />
-              <AlertDialogDescription />
-              <SignInView
-                callbackUrl="/"
-                onSignIn={() => setIsLoggingIn(true)}
-              />
-            </AlertDialogContent>
-          </AlertDialog>
-        </div>
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button
+              size={'sm'}
+              variant={'default'}
+              aria-label="google login button"
+              onClick={() => {
+                pause();
+              }}
+            >
+              지금 시작하기
+            </Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent className={cn('absolute left-0 top-0')}>
+            <AlertDialogTitle />
+            <AlertDialogDescription />
+            <SignInView callbackUrl="/" onSignIn={() => setIsLoggingIn(true)} />
+          </AlertDialogContent>
+        </AlertDialog>
       );
   };
 
