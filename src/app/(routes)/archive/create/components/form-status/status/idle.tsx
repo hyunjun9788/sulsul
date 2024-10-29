@@ -21,7 +21,7 @@ export const IdleStatus = ({
   const { setIsSampleClicked } = useSampleStore();
   return (
     <div className={cn('h-full', className)} {...props}>
-      <div className="flex size-full flex-col items-center justify-center gap-4">
+      <div className="flex size-full min-w-[400px] flex-col items-center justify-center gap-4">
         <div className="relative rounded-md bg-blue-100 px-6 py-4">
           <div className="text-center text-blue-500">
             <p>{firstLine}</p>

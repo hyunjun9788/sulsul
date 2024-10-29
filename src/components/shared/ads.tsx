@@ -19,7 +19,7 @@ export default function Ads() {
             ins.className = 'kakao_ad_area';
 
             const windowSize = window.innerWidth;
-            if (windowSize < 1024) {
+            if (windowSize < 768) {
               ins.setAttribute('data-ad-unit', 'DAN-UydmU7g5E3notBGb');
               ins.setAttribute('data-ad-width', '320');
               ins.setAttribute('data-ad-height', '50');

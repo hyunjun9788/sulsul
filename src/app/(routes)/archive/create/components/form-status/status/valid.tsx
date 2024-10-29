@@ -15,7 +15,7 @@ export const ValidStatus = ({
       className={cn('h-[650px] bg-white rounded-md shadow-base', className)}
       {...props}
     >
-      <div className="flex size-full flex-col items-center justify-center gap-4">
+      <div className="flex size-full min-w-[400px] flex-col items-center justify-center gap-4">
         <div className="relative rounded-md bg-blue-100 px-6 py-4">
           <div className="text-center text-blue-500">
             <p>이제 예상질문 생성하기</p>
