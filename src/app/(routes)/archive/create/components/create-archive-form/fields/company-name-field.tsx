@@ -9,6 +9,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { useCurrentUser } from '@/entities/users/hooks';
 import { cn } from '@/lib/utils';
+import { usePendingStore } from '@/store/client';
 import { useCreateQuestionStore } from '@/store/createQuestions';
 import { useSampleStore } from '@/store/sampleQuestions';
 
@@ -23,6 +24,7 @@ export const CompanyNameField = ({
   const { isSampleClicked } = useSampleStore();
   const { status } = useCurrentUser();
   const { isQuestionCreated } = useCreateQuestionStore();
+  const { isPending } = usePendingStore();
 
   return (
     <div className={cn(className)} {...props}>
@@ -40,9 +42,13 @@ export const CompanyNameField = ({
               <FormControl>
                 <Input
                   placeholder="지원하는 기업"
-                  className="rounded-sm border-gray-100 bg-gray-100 disabled:cursor-default disabled:opacity-100"
+                  className="rounded-sm border-gray-100 bg-gray-100 disabled:cursor-not-allowed disabled:opacity-100"
                   {...field}
-                  disabled={isQuestionCreated}
+                  disabled={
+                    isQuestionCreated ||
+                    status === 'unauthenticated' ||
+                    isPending
+                  }
                 />
               </FormControl>
               <FormMessage />
