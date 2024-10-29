@@ -9,6 +9,7 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 import { useCurrentUser } from '@/entities/users/hooks';
 import { cn } from '@/lib/utils';
+import { usePendingStore } from '@/store/client';
 import { useCreateQuestionStore } from '@/store/createQuestions';
 import { useSampleStore } from '@/store/sampleQuestions';
 
@@ -20,6 +21,7 @@ export const ContentField = ({ className, ...props }: ContentFieldProps) => {
   const { isSampleClicked } = useSampleStore();
   const { status } = useCurrentUser();
   const { isQuestionCreated } = useCreateQuestionStore();
+  const { isPending } = usePendingStore();
 
   const [showError, setShowError] = useState(false);
 
@@ -73,12 +75,16 @@ export const ContentField = ({ className, ...props }: ContentFieldProps) => {
                   maxLength={1999}
                   className={cn(
                     'size-full resize-none overflow-y-scroll rounded-none border-0 px-0 text-base text-gray-800',
-                    'disabled:cursor-default disabled:text-gray-800 disabled:opacity-100',
+                    'disabled:cursor-not-allowed disabled:text-gray-800 disabled:opacity-100',
                   )}
                   placeholder="300자 이상 2000자 이내의 내용을 입력해주세요."
                   onFocus={() => form.clearErrors('resume')}
                   {...field}
-                  disabled={isQuestionCreated}
+                  disabled={
+                    isQuestionCreated ||
+                    status === 'unauthenticated' ||
+                    isPending
+                  }
                   onBlur={() => {
                     field.onBlur();
                     setShowError(true);

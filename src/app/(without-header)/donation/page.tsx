@@ -5,7 +5,7 @@ import RightBox from './components/right';
 
 function Page() {
   return (
-    <div className="relative flex h-full flex-col bg-[#ffeb00] pt-[52px]">
+    <div className="relative flex h-screen flex-col bg-[#ffeb00] pt-[52px]">
       <Header />
       <div className="flex w-full justify-center gap-4">
         <LeftBox />

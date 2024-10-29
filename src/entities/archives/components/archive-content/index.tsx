@@ -36,16 +36,16 @@ export const ArchiveContent = ({
       </h2>
       <div className="mt-[16px] flex size-full h-[650px] flex-col gap-2 rounded-md border border-gray-200 bg-white p-[28px] shadow-base">
         <div className="flex size-full flex-col gap-3">
-          <div className="w-fit cursor-default rounded-sm bg-gray-100 px-3 py-2 text-sm font-medium text-gray-600">
+          <div className="w-fit cursor-not-allowed rounded-sm bg-gray-100 px-3 py-2 text-sm font-medium text-gray-600">
             {companyName}
           </div>
           <div>
-            <h3 className="w-full cursor-default text-2xl font-semibold">
+            <h3 className="w-full cursor-not-allowed text-2xl font-semibold">
               {title}
             </h3>
           </div>
           <div className="w-full">
-            <div className="max-h-[400px] cursor-default overflow-scroll whitespace-pre-line text-base text-gray-800">
+            <div className="max-h-[400px] cursor-not-allowed overflow-scroll whitespace-pre-line text-base text-gray-800">
               {resume}
             </div>
           </div>

@@ -9,6 +9,7 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 import { useCurrentUser } from '@/entities/users/hooks';
 import { cn } from '@/lib/utils';
+import { usePendingStore } from '@/store/client';
 import { useCreateQuestionStore } from '@/store/createQuestions';
 import { useSampleStore } from '@/store/sampleQuestions';
 
@@ -20,6 +21,7 @@ export const TitleField = ({ className, ...props }: TitleFieldProps) => {
   const { isSampleClicked } = useSampleStore();
   const { status } = useCurrentUser();
   const { isQuestionCreated } = useCreateQuestionStore();
+  const { isPending } = usePendingStore();
 
   const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const textarea = event.target;
@@ -43,13 +45,17 @@ export const TitleField = ({ className, ...props }: TitleFieldProps) => {
               <FormControl>
                 <Textarea
                   placeholder="자소서 제목을 입력해주세요"
-                  className="h-fit w-full resize-none rounded-none border-0 px-0 text-xl font-semibold disabled:cursor-default disabled:opacity-100"
+                  className="h-fit w-full resize-none rounded-none border-0 px-0 text-xl font-semibold disabled:cursor-not-allowed disabled:opacity-100"
                   {...field}
                   rows={1}
                   onInput={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                     handleInput(e);
                   }}
-                  disabled={isQuestionCreated}
+                  disabled={
+                    isQuestionCreated ||
+                    status === 'unauthenticated' ||
+                    isPending
+                  }
                 />
               </FormControl>
               <FormMessage />
