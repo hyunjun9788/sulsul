@@ -4,13 +4,15 @@
 
 ## 프로젝트 목적
 
-취준생이 뽑은 가장 어려운 채용단계 1위, “면접” 취준생 5명 중 3.5명은 “면접 공포증”<br>
+취준생이 뽑은 가장 어려운 채용단계 1위, “면접” 취준생 5명 중 3.5명은 “면접 공포증”
+
 저희 팀은 “면접에 대한 두려움을 자신감으로 바꿀 순 없을까?”하는 고민에서부터 취업준비생들을 위한 프로젝트를 시작했습니다.
-사업적인 접근보다는 취준생들의 면접 여정을 돕는 것이 저희의 목표입니다.
 
-🔗 프로젝트 URL : https://www.sulsul-interview.kr/
+사업적인 접근보다는 **취준생들의 면접 여정을 돕는 것**이 저희의 목표입니다.
 
-📅 개발 기간 : 24.07.18 ~ 24.10.07
+
+#### 📅 개발 기간 : 24.07.18 ~ 24.10.07
+#### 🔗 프로젝트 URL : https://www.sulsul-interview.kr/
 
 <br>
 <br>
@@ -24,31 +26,6 @@
 | <img src="https://avatars.githubusercontent.com/u/140994246?v=4" alt="신정원" width="150"> | <img src="https://avatars.githubusercontent.com/u/81910334?v=4" alt="김연정" width="150"> | <img src="https://avatars.githubusercontent.com/u/71435571?v=4" alt="김예진" width="150"> | <img src="https://avatars.githubusercontent.com/u/121845820?v=4" alt="남현준" width="150"> | <img src="https://avatars.githubusercontent.com/u/101189924?v=4" alt="한정욱" width="150"> | <img src="https://avatars.githubusercontent.com/u/19619055?v=4" alt="이현규" width="150"> | <img src="https://avatars.githubusercontent.com/u/79736971?v=4" alt="이승준" width="150"> |
 |                                         PM/디자인                                          |                                            FE                                             |                                            FE                                             |                                             FE                                             |                                             FE                                             |                                            BE                                             |                                            BE                                             |
 |                            [GitHub](https://github.com/oreo3o)                             |                           [GitHub](https://github.com/yeooonn)                            |                            [GitHub](https://github.com/ggjiny)                            |                          [GitHub](https://github.com/hyunjun9788)                          |                           [GitHub](https://github.com/nowrobin)                            |                         [GitHub](https://github.com/HyunGyu-Lee)                          |                           [GitHub](https://github.com/JAEHEE25)                           |
-
-<br>
-<br>
-
-## 프로젝트 소개
-
-(참고 하시면 좋을 것 같습니다!)
-
-면접질문 예측
-
-내 자기소개서를 입력하면 인공지능 수리가 면접 예상질문을 예측해줘요.
-예상 질문에 대한 답변을 작성한 후 작성한 답변에 대한 피드백 또한 받을 수 있어요.
-
-기출문제
-
-매주 다른 지원자들과 함께 하나의 기출문제를 푸는 '다같이 면접 기출'과, 면접 기출 100문제를 푸는 '백문백답 챌린지'를 통해 다양한 질문을 경험하고 실력을 높여요.
-
-실전연습
-
-연습할 면접질문을 선택한 후, 답변을 잘 말할 수 있는지 스스로 평가해
-보며 말하는 연습을 해요. 대시보드에서 연습 현황을 한눈에 볼 수 있어요.
-
-아카이브
-
-생성된 면접 예상질문과 답변이 저장되며, 나만의 면접 데이터가 쌓여요. 다음번 면접 준비도 끄떡없어요.
 
 <br>
 <br>
@@ -73,5 +50,36 @@
 <img src="https://img.shields.io/badge/Google Gemini-8E75B2?2088FF=flat-square&logo=Google Gemini&logoColor=white"/>
 </div>
   
+<br>
+<br>
+
+## 프로젝트 소개
+
+
+## 🔎 면접질문 예측
+![1  면접질문 예측-답변에 대한 피드백 받기](https://github.com/user-attachments/assets/6eb72d14-a6cf-4bb0-a89b-cda5eafe021e)
+
+내 자기소개서를 입력하면 **인공지능 수리가 면접 예상질문을 예측**해줘요.🧐
+
+예상 질문에 대한 답변을 작성한 후 작성한 **답변에 대한 피드백**도 받을 수 있어요.
+
+
+## 📑 기출문제
+![면접기출-메인](https://github.com/user-attachments/assets/4290ce08-e0d9-483d-8143-2ca17e477b85)
+
+매주 다른 지원자들과 함께 하나의 기출문제를 푸는 '**다같이 면접 기출**'과, 면접 기출 100문제를 푸는 '**백문백답 챌린지**'를 통해 다양한 질문을 경험하고 실력을 높여요.✍️
+
+## ✏️ 실전연습
+![3 실전연습-메인](https://github.com/user-attachments/assets/a68a06a7-dee3-472c-94b0-8243db84013d)
+
+연습할 면접질문을 선택한 후, 답변을 잘 말할 수 있는지 **스스로 평가해보며 말하는 연습**을 해요. 
+
+대시보드에서 연습 현황을 한눈에 볼 수 있어요.👀
+
+## 📂 아카이브
+![2 아카이브-필터   카드클릭](https://github.com/user-attachments/assets/6daf06ef-c766-4a38-b63f-3cbd0a395752)
+
+생성된 면접 예상질문과 답변이 저장되며, **나만의 면접 데이터**가 쌓여요. 다음 면접 준비도 끄떡없어요.💪
+
 <br>
 <br>
