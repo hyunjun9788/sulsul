@@ -1,11 +1,37 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
 
 const MobileNotification = () => {
   const copiedLink = 'https://www.sulsul-interview.kr';
+  const layoutRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    layoutRef.current = document.querySelector('#layout') as HTMLElement;
+
+    const handleMediaQueryChange = (e: MediaQueryListEvent) => {
+      if (layoutRef.current) {
+        layoutRef.current.style.backgroundColor = e.matches ? 'white' : '';
+      }
+    };
+
+    if (mediaQuery.matches && layoutRef.current) {
+      layoutRef.current.style.backgroundColor = 'white';
+    }
+
+    mediaQuery.addEventListener('change', handleMediaQueryChange);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleMediaQueryChange);
+      if (layoutRef.current) {
+        layoutRef.current.style.backgroundColor = '';
+      }
+    };
+  }, []);
 
   return (
     <div className="hidden mobile:block">
